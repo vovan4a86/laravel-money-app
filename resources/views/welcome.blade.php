@@ -20,7 +20,7 @@
                     </div>
                     <div class="d-flex">
                         <span class="fst-italic mx-2 align-self-center">{{$one->updated_at}}</span>
-                        <div class="d-flex bg-light p-2 rounded-1">
+                        <div class="d-flex align-content-center bg-light p-2 rounded-1">
                             <a href="/payments/{{ $one->id }}/edit" rel="nofollow" class="btn btn-sm btn-outline-dark">Изменить</a>
                             <a href="/payments/{{ $one->id }}/delete" rel="nofollow" class="btn btn-sm btn-close"></a>
                         </div>

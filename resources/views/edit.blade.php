@@ -46,6 +46,5 @@
             </div>
             <button class="btn btn-success">Добавить</button>
         </form>
-
     </div>
 @endsection

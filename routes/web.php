@@ -3,6 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentsController;
 
+Route::get('/clear', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+
+    return "Кэш очищен.";
+});
+
 Route::get('/', [PaymentsController::class, 'index']);
 
 Route::get('/payments/{type}/all', [PaymentsController::class, 'getAllPayments']);

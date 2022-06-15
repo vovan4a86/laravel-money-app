@@ -6,16 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
-class PaymentsController extends Controller
-{
+class PaymentsController extends Controller {
     public function index() {
         $all = DB::table('payments')
             ->join('payment_types', 'payments.type_id', '=', 'payment_types.t_id')
             ->orderByDesc('updated_at')
             ->get();
-
-//        dd($all);
-
 
         $sum = 0;
         foreach ($all as $one) {
@@ -73,7 +69,6 @@ class PaymentsController extends Controller
             ->select('type_id', 'type_name')
             ->distinct()
             ->get();
-
 
         return view('add', [
                 'type' => $type,
@@ -140,10 +135,7 @@ class PaymentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      */
-    public function update(Request $request, int $id)
-    {
-//        dd($request->all());
-
+    public function update(Request $request, int $id) {
         $validatedData = $request->validate([
             'is_income' => 'required',
             'type_id' => 'required',
@@ -162,7 +154,7 @@ class PaymentsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(int $id) {
         DB::table('payments')->where('id', '=', $id)->delete();
